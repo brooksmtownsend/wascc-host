@@ -5,18 +5,18 @@ fn main() -> std::result::Result<(), Box<dyn std::error::Error>> {
     env_logger::init();
 
     host::add_actor(Actor::from_gantry(
-        "MBHRSJORBXAPRCALK6EKOBBCNAPMRTM6ODLXNLOV5TKPDMPXMTCMR4DW",
+        "MCDJMLT4P4M25F5VGOATKCOUAU26SSLMCKORT3EVT2WSTERQVUJ6DEW4",
     )?)?;
     host::add_native_capability(NativeCapability::from_file(
-        "./examples/.assets/libwascc_nats.dylib",
+        "./examples/.assets/libnats_provider.dylib",
     )?)?;
     host::configure(
-        "MBHRSJORBXAPRCALK6EKOBBCNAPMRTM6ODLXNLOV5TKPDMPXMTCMR4DW",
+        "MCDJMLT4P4M25F5VGOATKCOUAU26SSLMCKORT3EVT2WSTERQVUJ6DEW4",
         "wascc:messaging",
-        nats_config("gantry.local"),
+        nats_config("testsubject"),
     )?;
 
-    println!("**> Send a nats message to gantry.local to test");
+    println!("**> Send a nats message to testsubject to test");
 
     std::thread::park();
 
